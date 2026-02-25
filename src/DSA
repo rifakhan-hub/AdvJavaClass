@@ -1,0 +1,159 @@
+** know the heirarachy of implementation or class
+** to check everything about a class use command
+    "javap java.package_name.class_name"
+
+*IQ* default package of java
+    -- java.lang package
+
+what is DSA?
+** data structure is the way to store the data
+** algo is teh set of rule.
+
+APPROACHEs
+ dp
+ bracktrack
+
+TYPES OF DATA STRUCTURE
+    Primitive
+        --int, float, char, double, boolean
+
+    Non-Primitive
+    -- Linear DS
+        -- array, arraylist, linked list, stack, queue
+        -- elements stored in sequential data
+        -- used when less no. of dataset
+
+    -- Non Linear DS
+        -- tree, graph, hash table
+        -- used when large no.of dataset
+
+
+1. STACK
+    javap java.util.Stack
+    -- stack is a linear data structure
+    -- stack follows the principle of "last in first out".
+    -- stack have three main operations
+        PUSH - to insert the data in the stack
+        POP -- remove or delete
+        PEEK -- top most element of
+
+
+    WORKING OF STACK
+        -- all the operations of stack are work from single end point called top.
+
+    CONDITIONS
+        -- if TOP is == -1   i.e. the stack is empty/ underflow
+        -- if top == 0,      i.e it have single element
+        -- if TOP == size-1, i.e it is full/ overflow
+
+    IMPLEMENTATION......most asked in interview
+    *IQ* tell the traditional approach of stack
+    ** use predefined method in coding round
+
+    STACK CLASS [Collection Framework]
+        ** frameworks are the predefined class that can be used but not be changed
+
+        -- stack is a generic class
+        -- all classes of collection framework are generic class
+        -- it works as dynamic array
+
+        javap java.util.Stack
+
+        C:\Users\RIFA>javap java.util.Stack
+        Compiled from "Stack.java"
+        public class java.util.Stack<E> extends java.util.Vector<E> {
+          public java.util.Stack();
+          public E push(E);
+          public synchronized E pop();
+          public synchronized E peek();
+          public boolean empty();
+          public synchronized int search(java.lang.Object);
+        }
+
+        Heirarchy
+        * e -- extends
+        * i -- implements
+
+        stack -e-> vector class -i-> list interface -e-> collection interface -e-> iterable interface
+
+    PATTERNS
+            1. Basic Operations
+          -------------------------------
+          A+B => infix expression
+          AB+ => postfix expression
+          +AB => prefix expression
+
+            2. Expression Conversion **
+                -- infix to postfix conversion
+                        A+B/(C*D)
+                    WAY 1-
+                        A+B/CD*
+                        AB+/CD*
+                        AB+CD*/
+
+                    WAY 2 - by using stack ds
+                        Rules: (apply on Operators)
+                            a. set priority of operators
+                                ( ^, $      high        3
+                                  /, *      medium      2
+                                  +, -      low         1
+                            b.  no two operators of same priority can stay together
+                                ...if happens then fork the previous operator and then insert new operator
+                            c.  if any operator inside the bracket.. it should be poped out by the bracket
+                                ....if (+) then plus will be poped out too use and bracket will be poped out and will not be use
+                            d.  lower priority infront of higher priority operator can not be tolerated
+                            e. higher priority operator infront of lower priority operator can stay together
+                                 / then +.....no problem
+                                if +  the / ....voilation of rule 4
+
+   A+B/(C*D)
+   ------------------------------------
+   symbol         stack       postfix
+     A                           A
+     +              +            A
+     B              +            AB
+     /              +/           AB
+     (              +/(          AB
+     C              +/(          ABC
+     *              +/(*         ABC
+     D              +/(*         ABCD
+     )              +/(*         ABCD
+
+   (A+B/C*(D+E)-F  => ABC/DE*+-
+   ((A-(B+C))*D^ (E+F) => ABC+-D*EF+^
+   A+B*C+(D*E+F)*G => ABC*+DE*
+   ------------------------------------
+    symbol      stack       postfix
+    (               (
+    A               (           A
+    +               (+          A
+    B               (+          AB
+    /               (+/         AB
+    C               (+          ABC/
+    *               (+*         ABC/
+    (               (+(         ABC
+    D               (+/*(       ABCD
+    +               (+/*(+      ABCD
+    E               (+/*(+      ABCDE
+    )               (+/*        ABCDE+
+    -               (+/*-       ABCDE+
+
+
+
+*IQ* is java a fully object oriented programming lang? -- NO
+    -- because of primitive data type
+but java wanted to be fully oo prog lang
+    -- so they created wrapper class
+
+DIFFERENCE BETWEEN AUTOBOXING AND UNBOXING
+ Auto boxing -- converting primitive into class object
+ Unboxing -- reverse of autoboxing
+
+
+2. QUEUE
+3. LINKED LIST
+4. TREE
+5. GRAPH
+6. HASH
+
+

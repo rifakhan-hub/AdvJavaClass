@@ -1,0 +1,148 @@
+class Constructor.Test{}
+
+** how is data stored(5 types of areas)
+
+class{
+
+
+this KEYWORD USE
+*IQ* this can be used with variable, methods and constructor
+        but cannot be called inside static class
+
+       Variable   :  this.variableName
+       Method     :  this.methodName()
+       Constructor: this()
+
+ *IQ* constructor mein this statement can be only first statement
+        not even two this statement can be called in a constructor
+
+
+ 1. variables
+	int a = 100; ( var is "a")
+		assignment is done from right to left
+		value is assigned to var in runtime
+
+		int a = 100;
+		int b = 200;
+		final int c = 300;      // it became constant with final keyword
+
+		VAR     CT      RT
+	--------------------------------
+	      a       a      100
+	      b       b      200
+	      c      300     300
+	     a>b     a>b    false
+	    100<c    true    true
+
+	     class Constructor.Test{
+	        psvm(){
+	            int a= 100; int b = 200;
+	            while (a<b){
+	                print("hi");
+	            }
+	            print("hello");
+	        }
+	     }
+
+	     OUTPUT: infinite hi
+
+	     class Constructor.Test{
+         	        psvm(){
+         	            final int a= 100;
+         	            final int b = 200;
+         	            while (a<b){
+         	                print("hi");
+         	            }
+         	            print("hello");
+         	        }
+         	     }
+
+         	     OUTPUT: ERROR
+
+ DEFAULT VALUES
+ byte, short,int,long : 0
+ float, double        : 0.0
+ boolean              : false
+ char                 : null charachter/ blank space
+
+
+
+
+
+TYPES OF VARIABLE
+
+	-- local variable (Stack) -- defined inside method, constructor or block
+		** memory is allocated only when m/c/b are called
+		** var in parameter is always a local variable
+	-- instance variable (heap) -- defined inside class but outside the method/ constructor/block
+		** memory is allocated when object is created
+	-- static variable (non heap area) -- inside class outside M/C/B but with static variable.
+		** when .class file is loaded(byte code)
+
+	** return value is stored in stack
+
+
+		instance var <- local var // directly
+		this.inst var <- local var
+		// but if the name are same the priority is given to local var and the value won't be assigned to the instance variable so for this we use this.var_name
+		** this refer current class object
+
+
+ 2.methods
+	-- methods are used to find logic of the program
+	-- methods are always called explicitly
+
+*IQ* What is method signature?
+*IQ* What is responsible to call method signature?
+
+
+ TYPES OF METHOD-- 2 types
+
+	-- Instance method -- also known as non static method
+	-- Static Method -- with static keyword
+	    ** static method can be called with this
+	    ** but this can not be called in static method
+
+METHOD CALLING
+	Instance method -directly-> instance method / variable
+	Static method -object-> instance method / variable
+	Instance method -CLassName-> Static method / variable
+	Static method -(class/object/directly)-> Static method / variable
+		**in same package -- don't use directly
+		** most used -- class name
+
+	** for return in a class the data is return from where it is called
+
+TYPES of OBJECTS
+    named
+    nameless
+    instance factory method
+    static factory method
+
+ 3.constructor
+
+ *IQ* -- can we assigned  return type to a constructor? ----- YES
+        but it will behave like a method
+
+   --constructor is a special type of method which invoke implicitly at the time of object creation
+   --constructor is used to initialized the object
+   --constructor is also used to initialised instance variable
+
+   -- constructor and class name are same
+   -- it doesn't have return type
+
+   ** whenever there is a user defined constructor in the class compiler does not create any default constructor.
+
+   TYPES OF CONSTRUCTOR
+
+   1. default constructor
+        -- when the compiler create a constructor at compile time it is called default constructor.
+        -- it is always zero parameterized
+
+   2. User defined constructor
+        -- ud const can also be zero parameterized and can have more parameter
+
+ 4.blocks
+ 5.inner class  -- imp for dsa(must know) used in websites for que sol
+
+}

@@ -84,6 +84,20 @@ TYPES OF DATA STRUCTURE
           +AB => prefix expression
 
             2. Expression Conversion **
+
+                -- infix to prefix -- reverse the infix string, replace the brackets '(' <-> ')', apply infix -> postfix
+                -- postfix to infix  -- If operand → push to stack
+                                        If operator:→ Pop operand2 → Pop operand1 -> Make: (operand1 operator operand2)
+
+                -- prefix to infix -- traverse from right -> left
+                                        -- Pop operand1 -> Pop operand2 -> Make (operand1 operator operand2)
+
+                -- Postfix to Prefix -- Traverse Left → Right
+                                        -- Pop operand1 -> Pop operand2 -> Make (operator + operand1 + operand2)
+
+                -- Prefix → Postfix -- traverse from right -> left
+                                        -- Pop operand1 -> Pop operand2 -> Make (operand1 operand2 operator)
+
                 -- infix to postfix conversion
                         A+B/(C*D)
                     WAY 1-
@@ -99,14 +113,26 @@ TYPES OF DATA STRUCTURE
                                   +, -      low         1
                             b.  no two operators of same priority can stay together
                                 ...if happens then fork the previous operator and then insert new operator
+                               -- If operator is left associative (+ - * /)
+                                    → Pop previous operator from stack
+                                    → Then push new operator
+
+                               -- If operator is right associative (^)
+                                    → Do NOT pop
+                                    → Just push new operator
+
                             c.  if any operator inside the bracket.. it should be poped out by the bracket
                                 ....if (+) then plus will be poped out too use and bracket will be poped out and will not be use
                             d.  lower priority infront of higher priority operator can not be tolerated
-                            e. higher priority operator infront of lower priority operator can stay together
-                                 / then +.....no problem
-                                if +  the / ....voilation of rule 4
+                                ....When current operator has LOWER precedence than stack top operator
+                                → Pop stack operator first
+                                → Then push current operator
 
-   A+B/(C*D)
+                            e. higher priority operator infront of lower priority operator can stay together
+                                 / then +.....voilation of rule 4
+                                if +  the / ....no problem
+
+   A+B/(C*D) => ABCD*/+
    ------------------------------------
    symbol         stack       postfix
      A                           A
@@ -118,10 +144,13 @@ TYPES OF DATA STRUCTURE
      *              +/(*         ABC
      D              +/(*         ABCD
      )              +/(*         ABCD
+                    +/           ABCD*
+                    +           ABCD*/
+                                ABCD*/+
 
-   (A+B/C*(D+E)-F  => ABC/DE*+-
-   ((A-(B+C))*D^ (E+F) => ABC+-D*EF+^
-   A+B*C+(D*E+F)*G => ABC*+DE*
+   (A+B/C*(D+E)-F  => ABC/DE+*+F-
+   ((A-(B+C))*D^ (E+F) => ABC+-DEF+^*
+   A+B*C+(D*E+F)*G => ABC*+DE*F+G*+
    ------------------------------------
     symbol      stack       postfix
     (               (
@@ -129,14 +158,16 @@ TYPES OF DATA STRUCTURE
     +               (+          A
     B               (+          AB
     /               (+/         AB
-    C               (+          ABC/
+    C               (+/         ABC
     *               (+*         ABC/
-    (               (+(         ABC
-    D               (+/*(       ABCD
-    +               (+/*(+      ABCD
-    E               (+/*(+      ABCDE
-    )               (+/*        ABCDE+
-    -               (+/*-       ABCDE+
+    (               (+*(        ABC/
+    D               (+*(        ABC/D
+    +               (+*(+       ABC/D
+    E               (+*(+       ABC/DE
+    )               (+*         ABC/DE+
+    -               (-          ABC/DE+*+
+    F               (-          ABC/DE+*+F
+    )                           ABC/DE+*+F-
 
 
 
@@ -146,8 +177,14 @@ but java wanted to be fully oo prog lang
     -- so they created wrapper class
 
 DIFFERENCE BETWEEN AUTOBOXING AND UNBOXING
- Auto boxing -- converting primitive into class object
- Unboxing -- reverse of autoboxing
+ Autoboxing -- converting primitive into class object(auto conversion)
+            -- occurs at compile time
+ Unboxing -- reverse of autoboxing, conversion of wrapper into primitive dat type
+
+ SIMILARITIES
+ --Extra object creation
+ --Extra memory usage
+ --Slight performance overhead
 
 
 2. QUEUE

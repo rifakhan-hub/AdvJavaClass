@@ -1,0 +1,71 @@
+*IQ* What is Wrapper class?
+        -- A Wrapper Class is a class that converts a primitive data type into an object.
+------------------------
+*IQ* Integer a = 100;
+     Integer b = 100;
+     System.out.println(a == b);  // true
+
+     but:
+     Integer a = 200;
+     Integer b = 200;
+
+     System.out.println(a == b);  // false
+
+     WHY?
+        -- Because Java caches Integer values from -128 to 127
+--------------------------------------
+*IQ* What is generics?
+        -- Generics allow us to write classes, interfaces, and methods with a parameterized type.
+        --You can define a class that works with any data type, but safely.
+        -- Integer is the type parameter.
+           <Integer> is called Generic Type
+-----------------------------------------------------------------------------------------------------------------
+ARRAYLIST -- resizable/dynamic array
+    -- collection framework of java
+    -- java.util.Arraylist
+    -- use when Frequent access
+    -- do not use when Heavy insert/delete in middle
+    -- ArrayList is NOT synchronized.
+
+*IQ* can arraylist store primitive data type? -- NO
+        -- it uses Wrapper class
+        -- Java Collections (like ArrayList, HashMap, etc.) store objects only, not primitives.
+
+*IQ* Is arrayllist slower than array? -- YES
+        -- Dynamic resizing, Extra memory overhead,Stores objects (not primitives directly)
+
+    OPERATIONS
+        -- Add
+            -- list.add(val), -- add element at the end
+            -- list.add(index, val), -- add element at the specific position/index
+        -- Access
+            --list.get(index) -- retrieve element of that index
+        -- Update
+            -- list.set(index, val) -- update the value of at particular index
+        -- Remove
+            -- list.remove(Integer.value.Of(val)): -- remove by value
+            --  list.remove(1) -- remove index 1, not value 1
+        -- Size
+            -- list.size() -- return the no. of elements
+        -- Search
+            -- contains(obj o) -- check if element exist
+            -- indexOf(obj o) -- return the index of first occurance
+        -- clear
+            -- list.clear() -- remove all element
+
+    --  ENHANCED FOR
+        for(Integer num : list){
+            System.out.println(num);
+        }
+    -- ITERATOR
+        Iterator<Integer> it = list.iterator();
+            while(it.hasNext()){
+            sout(it.next()){
+            }
+
+    WORKING
+        -- use dynamic array
+        -- default cap = 10
+        -- when full -> new array  created with cap 1.5x
+                new cap = old cap + (old cap/2)
+        -- old elements are copied into new

@@ -1,0 +1,14 @@
+## OPERATING SYSTEM WITH CPU SCHEDULING 
+
+
+QUEUE
+    -- linear data structure
+    -- follows FIFO
+    -- OPERATIONS
+            1. Enqueue -- Insertion [REAR] ^++ 
+            2. Dequeue -- Deletion [FRONT] ^++
+            
+    -- CONDITIONS
+            -- front == rear == -1  -> empty
+            -- front == rear        -> single element
+            -- rear == size-1       -> full

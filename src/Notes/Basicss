@@ -80,7 +80,7 @@ TYPES OF VARIABLE
 		** when .class file is loaded(byte code)
 
 	** return value is stored in stack
-	/
+
 
 
 		instance var <- local var // directly

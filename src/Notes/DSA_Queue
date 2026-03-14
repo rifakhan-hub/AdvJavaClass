@@ -1,13 +1,16 @@
-## OPERATING SYSTEM WITH CPU SCHEDULING 
+## OPERATING SYSTEM WITH CPU SCHEDULING
 
+*IQ* what is the limitation of queue data structure?
+        -- space limitation
+        -- overcome by using circular queue
 
 QUEUE
     -- linear data structure
     -- follows FIFO
     -- OPERATIONS
-            1. Enqueue -- Insertion [REAR] ^++ 
+            1. Enqueue -- Insertion [REAR] ^++
             2. Dequeue -- Deletion [FRONT] ^++
-            
+
     -- CONDITIONS
             -- front == rear == -1  -> empty
             -- front == rear        -> single element

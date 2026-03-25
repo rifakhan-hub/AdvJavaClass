@@ -1,0 +1,26 @@
+
+*IQ* is linked list element stored in contiguous memory allocation? -- NO
+        -- it is stored in the form of object and there is no proper memory allocation for object and linked list link the object in the sequence
+
+*IQ* Is tree == graph with no cycle?  -- YES
+        --
+*IQ* Why do we need linked list?
+    -- Dynamic memory allocation
+
+LINKED LIST
+    -- it is a linear data structure
+    -- each element of linked list has reference/address/pointer to the next element of linked list
+        i.e it store the reference of next object.\
+    -- each element of linked list is called node.
+    -- each node of linked list contain  2 parts -- data part -- stores the data
+                                                 -- next part -- stores the reference
+    -- endpoint of linked list is head
+        -- if   head == null               i.e. linked list is empty
+        -- if   (tail) node.next == null   i.e last node of linked list
+
+
+DOUBLY LINKED LIST
+
+    -- [ prev | data | next ]
+    -- head  [ null | data | next ]
+    -- tail  [ prev | data | null ]
